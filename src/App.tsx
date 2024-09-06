@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FluentButton } from "../lib/main.ts";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
 
@@ -24,6 +25,8 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      Testing demo of component library
+      <FluentButton />
     </>
   );
 }

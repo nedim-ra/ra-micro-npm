@@ -48,6 +48,7 @@ export default defineConfig({
       output: {
         assetFileNames: "assets/[name][extname]",
         entryFileNames: "[name].js",
+        preserveModules: true,
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
