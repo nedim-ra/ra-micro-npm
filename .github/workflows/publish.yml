@@ -27,16 +27,10 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           npm run release # This runs standard-version to bump version and create changelog
-          git push --follow-tags origin HEAD
+          git push origin HEAD --tags  # Push changes to the current branch and tags
 
       - name: Publish to npm
         run: |
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Commit updated files
-        run: |
-          git add package.json CHANGELOG.md
-          git commit -m "chore: publish new version"
-          git push origin main
