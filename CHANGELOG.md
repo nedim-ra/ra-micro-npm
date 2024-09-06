@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.2.6 (2024-09-06)
+
+
+### Features
+
+* Adds new fluent component to serve as a test that fluent ui library works ([bbfb480](https://github.com/nedim-ra/ra-micro-npm/commit/bbfb480c490e8b354fdcf6a6a4de2b497065e5b7))
+
 ### 0.2.5 (2024-09-06)
 
 
