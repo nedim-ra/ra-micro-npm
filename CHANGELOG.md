@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.2.2 (2024-09-06)
+
+
+### Bug Fixes
+
+* Added console log to test tree shaking ([f3f35b8](https://github.com/nedim-ra/ra-micro-npm/commit/f3f35b8a3cd14d2ba26d32d85ff425dfcd085963))
+
 ### 0.2.1 (2024-09-06)
 
 
