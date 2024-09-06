@@ -6,7 +6,7 @@ function ComponentA() {
   return (
     <>
       Hello from RA Micro npm package component
-      <button onClick={() => setCount((count) => count + 1)}>
+      <button type="button" onClick={() => setCount(count + 1)}>
         count is {count}
       </button>
     </>

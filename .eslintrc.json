@@ -1,0 +1,25 @@
+{
+  "plugins": ["react"],
+  "extends": ["airbnb", "prettier"],
+  "globals": {
+    "__dirname": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "ignorePatterns": ["dist"],
+  "rules": {
+    "react/jsx-filename-extension": [
+      "error",
+      { "extensions": [".tsx", ".ts"] }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "eslint-plugin-import/extensions": "off",
+    "eslint-plugin-import/no-unresolved": "off"
+  }
+}

@@ -35,5 +35,10 @@
     "source.fixAll": "explicit"
   },
   "eslint.runtime": "node",
-  "eslint.validate": ["javascript", "javascriptreact", "typescript"]
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ]
 }
