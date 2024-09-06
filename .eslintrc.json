@@ -20,6 +20,7 @@
     ],
     "react/react-in-jsx-scope": "off",
     "eslint-plugin-import/extensions": "off",
-    "eslint-plugin-import/no-unresolved": "off"
+    "eslint-plugin-import/no-unresolved": "off",
+    "import/no-extraneous-dependencies": "off"
   }
 }
