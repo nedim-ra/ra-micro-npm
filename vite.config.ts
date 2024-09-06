@@ -2,6 +2,7 @@ import react from "@vitejs/plugin-react";
 import { glob } from "glob";
 import { fileURLToPath } from "node:url";
 import { extname, relative, resolve } from "path";
+import treeShakeable from "rollup-plugin-tree-shakeable";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 
@@ -9,6 +10,11 @@ import dts from "vite-plugin-dts";
 export default defineConfig({
   plugins: [
     react(),
+    /* [!CAUTION]
+      Only use this plugin if your package is actually tree-shakeable, meaning that each export would still function correctly if all the other exports were stripped out.
+      This plugin does not give your package that property. It only convinces bundlers that this is the case. 
+    */
+    treeShakeable(),
     dts({ include: ["lib"], tsconfigPath: "./tsconfig.app.json" }),
   ],
   build: {
