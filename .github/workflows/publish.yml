@@ -27,6 +27,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           npm run release # This runs standard-version to bump version and create changelog
+          git push --follow-tags origin HEAD
 
       - name: Publish to npm
         run: |
