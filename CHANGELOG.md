@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.1.0 (2024-09-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* ComponentB is no longer available in this version
+
+### Features
+
+* Deleted ComponentB ([9956af9](https://github.com/nedim-ra/ra-micro-npm/commit/9956af90d7344d021ae6df74b701644cc03fc598))
+
 ### 0.0.8 (2024-09-06)
 
 ### 0.0.7 (2024-09-06)
