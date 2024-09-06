@@ -1,5 +1,5 @@
 {
-  "plugins": ["react"],
+  "plugins": ["react", "@typescript-eslint"],
   "extends": ["airbnb", "prettier"],
   "globals": {
     "__dirname": true
@@ -18,10 +18,10 @@
       "error",
       { "extensions": [".tsx", ".ts"] }
     ],
+    "@typescript-eslint/no-explicit-any": "error",
     "react/react-in-jsx-scope": "off",
     "eslint-plugin-import/extensions": "off",
     "eslint-plugin-import/no-unresolved": "off",
-    "import/no-extraneous-dependencies": "off",
-    "@typescript-eslint/no-explicit-any": "error"
+    "import/no-extraneous-dependencies": "off"
   }
 }
