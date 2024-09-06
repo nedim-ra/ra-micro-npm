@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.2.5 (2024-09-06)
+
+
+### Bug Fixes
+
+* use tree shakable rollup plugin to add pure annotations to all top level expressions ([e01164b](https://github.com/nedim-ra/ra-micro-npm/commit/e01164b22c9534dee2dde5b11877bc1d903329b8))
+
 ### 0.2.4 (2024-09-06)
 
 ### 0.2.3 (2024-09-06)
