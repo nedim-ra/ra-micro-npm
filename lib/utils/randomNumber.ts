@@ -6,5 +6,6 @@
  * @returns A random integer between min and max.
  */
 export const randomNumber = (min: number, max: number): number => {
+  console.log("Hello from randomNumber");
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
