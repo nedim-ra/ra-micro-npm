@@ -2,8 +2,8 @@ name: Publish to npm
 
 on:
   push:
-    tags:
-      - "v*.*.*"
+    branches:
+      - main # Change to your default branch name if different
 
 jobs:
   publish:
@@ -27,7 +27,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           npm run release # This runs standard-version to bump version and create changelog
-          git push origin HEAD --tags  # Push changes to the current branch and tags
+          git push --follow-tags origin main  # Push changes to the targeted branch and tags
 
       - name: Publish to npm
         run: |
