@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.2.0 (2024-09-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* **core:** Removed capitalize utility, testing automatic major version change
+
+### Features
+
+* **core:** Removed capitalize utility, testing automatic major version change ([18acc92](https://github.com/nedim-ra/ra-micro-npm/commit/18acc92ab2f6c044b8cc90203bc904468574607b))
+
 ## 0.1.0 (2024-09-06)
 
 
