@@ -126,15 +126,6 @@ npm run build
 
 This will generate a build in the `dist/` folder, including both UMD and ES module formats.
 
-## Publishing to npm
-
-Tag a new release to trigger the workflow:
-
-```bash
-git tag v1.0.0
-git push origin v1.0.0
-```
-
 ## Automated Versioning and Publishing
 
 This library uses [standard-version](https://github.com/conventional-changelog/standard-version) to automate versioning, changelog generation, and npm publishing. Versioning follows [semantic versioning](https://semver.org/) based on commit messages.
