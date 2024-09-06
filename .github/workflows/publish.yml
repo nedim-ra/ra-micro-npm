@@ -24,13 +24,12 @@ jobs:
 
       - name: Generate release and version bump
         run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           npm run release # This runs standard-version to bump version and create changelog
 
       - name: Publish to npm
-
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
