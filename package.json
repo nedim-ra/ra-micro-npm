@@ -23,12 +23,12 @@
   },
   "peerDependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "axios": "^1.7.7"
+    "react-dom": "^18.3.1"
   },
   "dependencies": {
     "@fluentui/react": "^8.120.8",
-    "formik": "^2.4.6"
+    "formik": "^2.4.6",
+    "axios": "^1.7.7"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.4.1",
@@ -56,7 +56,6 @@
     "path": "^0.12.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "axios": "^1.7.7",
     "rollup-plugin-tree-shakeable": "^1.0.2",
     "standard-version": "^9.5.0",
     "typescript": "^5.5.3",
