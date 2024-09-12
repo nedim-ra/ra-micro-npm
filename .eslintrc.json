@@ -23,9 +23,18 @@
       "error",
       { "argsIgnorePattern": "^_" }
     ],
+    "@typescript-eslint/no-explicit-any": "error",
     "react/react-in-jsx-scope": "off",
     "eslint-plugin-import/extensions": "off",
     "eslint-plugin-import/no-unresolved": "off",
     "import/no-extraneous-dependencies": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["lib/models/**/*.ts", "lib/models/**/*.tsx"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    }
+  ]
 }

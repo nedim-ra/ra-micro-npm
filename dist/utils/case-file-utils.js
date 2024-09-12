@@ -6,7 +6,9 @@ e.formatCaseYear = (t) => {
 }, e.setLastUsedOptions = (t, n, i) => {
   let s = n;
   (!s || s.length === 0) && (s = []);
-  const c = s.findIndex((a) => a.key === t.key);
+  const c = s.findIndex(
+    (a) => a.key === t.key
+  );
   return c >= 0 ? (s.splice(c, 1), s.unshift(t)) : (s.unshift(t), s.length > 10 && s.pop()), i(s), s;
 };
 let r = e;

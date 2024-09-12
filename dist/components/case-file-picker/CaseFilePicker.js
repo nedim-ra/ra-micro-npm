@@ -17,7 +17,21 @@ function $({
   domain: u
   // ...rest
 }) {
-  const b = async (s) => {
+  const t = F.useRef(null), r = Object.assign(k || {}), b = {
+    ...r,
+    // Spread existing styles
+    root: {
+      ...r.root,
+      // Spread existing container styles
+      backgroundColor: "#ffffd0"
+      // Add the background color
+    },
+    input: {
+      ...r.input,
+      // Spread existing container styles
+      backgroundColor: "#ffffd0"
+    }
+  }, h = async (s) => {
     var m, p;
     const o = s.replace(/\D/g, ""), c = l.formatCaseYear(o);
     let e = await C.getCase(u, o);
@@ -33,21 +47,7 @@ function $({
       }));
       (p = t == null ? void 0 : t.current) == null || p.focus(!0), i(n);
     }
-  }, r = Object.assign(k || {}), h = {
-    ...r,
-    // Spread existing styles
-    root: {
-      ...r.root,
-      // Spread existing container styles
-      backgroundColor: "#ffffd0"
-      // Add the background color
-    },
-    input: {
-      ...r.input,
-      // Spread existing container styles
-      backgroundColor: "#ffffd0"
-    }
-  }, t = F.useRef(null);
+  };
   return /* @__PURE__ */ j.jsx(
     S,
     {
@@ -55,12 +55,12 @@ function $({
       allowFreeform: !0,
       label: g,
       onChange: (s, o, c, e) => {
-        console.log(s), s && e && b(e);
+        console.log(s), s && e && h(e);
       },
       onItemClick: (s, o) => {
         o && _(o);
       },
-      styles: h,
+      styles: b,
       options: y,
       selectedKey: f ? f.key : void 0,
       useComboBoxAsMenuWidth: !0,
