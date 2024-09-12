@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.2.8 (2024-09-12)
+
+
+### Bug Fixes
+
+* Added node_modules from dist ([8ef3b77](https://github.com/nedim-ra/ra-micro-npm/commit/8ef3b77200e047fd7cbe3b473dda3dfe3bb7e615))
+
 ### 0.2.7 (2024-09-12)
 
 ### 0.2.6 (2024-09-06)
