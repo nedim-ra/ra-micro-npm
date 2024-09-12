@@ -1,7 +1,6 @@
 import { PrimaryButton } from "@fluentui/react";
 
-function FleuntButton() {
-  console.log("Hello from lib FluentButton Component");
+function FluentButton() {
   return (
     <>
       Hello from RA Micro npm package FluentButton component
@@ -10,4 +9,4 @@ function FleuntButton() {
   );
 }
 
-export default FleuntButton;
+export default FluentButton;
