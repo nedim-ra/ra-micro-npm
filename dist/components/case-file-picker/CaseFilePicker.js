@@ -1,68 +1,68 @@
-import { j } from "../../node_modules/react/jsx-runtime.js";
+import { j as w } from "../../node_modules/react/jsx-runtime.js";
 import F from "react";
 import "../../models/CaseFile.js";
-import l from "../../utils/case-file-utils.js";
-import C from "../../services/case-file-service.js";
+import f from "../../utils/case-file-utils.js";
+import d from "../../services/case-file-service.js";
 import { ComboBox as S } from "../../node_modules/@fluentui/react/lib/components/ComboBox/ComboBox.js";
 function $({
-  label: g,
-  handleComboBoxChange: i,
+  label: C,
+  handleComboBoxChange: l,
   styles: k,
-  showErrorMessage: d,
-  selectedOption: f,
+  showErrorMessage: g,
+  selectedOption: u,
   caseOptions: y,
   setSelectedOption: _,
   disabled: x = !1,
-  // TEMP: Domain will be handled differently
-  domain: u
+  // TEMP: getDomain will be handled differently
+  getDomain: b
   // ...rest
 }) {
-  const t = F.useRef(null), r = Object.assign(k || {}), b = {
-    ...r,
+  const e = F.useRef(null), n = Object.assign(k || {}), h = {
+    ...n,
     // Spread existing styles
     root: {
-      ...r.root,
+      ...n.root,
       // Spread existing container styles
       backgroundColor: "#ffffd0"
       // Add the background color
     },
     input: {
-      ...r.input,
+      ...n.input,
       // Spread existing container styles
       backgroundColor: "#ffffd0"
     }
-  }, h = async (s) => {
+  }, j = async (a) => {
     var m, p;
-    const o = s.replace(/\D/g, ""), c = l.formatCaseYear(o);
-    let e = await C.getCase(u, o);
-    if (e && e.length > 0) {
-      const n = `${c} - ${e[0].akt_name}`, a = [{ key: o, text: n }];
-      (m = t == null ? void 0 : t.current) == null || m.focus(!0), i(a);
-    } else if (e = await C.getCaseByName(u, s), !e || e.length === 0)
-      d("Es gibt keine Suchergebnisse");
+    const t = a.replace(/\D/g, ""), c = f.formatCaseYear(t), s = await b();
+    let o = await d.getCase(s, t);
+    if (o && o.length > 0) {
+      const i = `${c} - ${o[0].akt_name}`, r = [{ key: t, text: i }];
+      (m = e == null ? void 0 : e.current) == null || m.focus(!0), l(r);
+    } else if (o = await d.getCaseByName(s, a), !o || o.length === 0)
+      g("Es gibt keine Suchergebnisse");
     else {
-      const n = e.map((a) => ({
-        key: l.formatCaseYear(a.akt_nr || ""),
-        text: `${l.formatCaseYear(a.akt_nr || "")} - ${a.akt_name}`
+      const i = o.map((r) => ({
+        key: f.formatCaseYear(r.akt_nr || ""),
+        text: `${f.formatCaseYear(r.akt_nr || "")} - ${r.akt_name}`
       }));
-      (p = t == null ? void 0 : t.current) == null || p.focus(!0), i(n);
+      (p = e == null ? void 0 : e.current) == null || p.focus(!0), l(i);
     }
   };
-  return /* @__PURE__ */ j.jsx(
+  return /* @__PURE__ */ w.jsx(
     S,
     {
-      componentRef: t,
+      componentRef: e,
       allowFreeform: !0,
-      label: g,
-      onChange: (s, o, c, e) => {
-        console.log(s), s && e && h(e);
+      label: C,
+      onChange: (a, t, c, s) => {
+        a && s && j(s);
       },
-      onItemClick: (s, o) => {
-        o && _(o);
+      onItemClick: (a, t) => {
+        t && _(t);
       },
-      styles: b,
+      styles: h,
       options: y,
-      selectedKey: f ? f.key : void 0,
+      selectedKey: u ? u.key : void 0,
       useComboBoxAsMenuWidth: !0,
       disabled: x
     }

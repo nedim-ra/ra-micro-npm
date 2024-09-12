@@ -18,7 +18,7 @@ interface CaseControlProps extends Partial<IComboBoxProps> {
   caseOptions: IComboBoxOption[];
   setSelectedOption: (option: IComboBoxOption) => void;
   disabled?: boolean;
-  domain: string;
+  getDomain: () => Promise<string>;
 }
 
 function CaseFilePicker({
@@ -30,8 +30,8 @@ function CaseFilePicker({
   caseOptions,
   setSelectedOption,
   disabled = false,
-  // TEMP: Domain will be handled differently
-  domain,
+  // TEMP: getDomain will be handled differently
+  getDomain,
   // ...rest
 }: CaseControlProps): JSX.Element {
   const comboBoxRef = React.useRef<IComboBox>(null);
@@ -53,6 +53,7 @@ function CaseFilePicker({
   const onChangeValue = async (input: string) => {
     const numValue = input.replace(/\D/g, "");
     const formattedValue = CaseFileUtils.formatCaseYear(numValue);
+    const domain = await getDomain();
     let caseData = await CaseFileService.getCase(domain, numValue);
 
     if (caseData && caseData.length > 0) {
@@ -89,7 +90,6 @@ function CaseFilePicker({
         _index,
         value?: string
       ) => {
-        console.log(event);
         if (event && value) {
           onChangeValue(value);
         }

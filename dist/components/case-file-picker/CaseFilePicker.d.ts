@@ -8,9 +8,9 @@ interface CaseControlProps extends Partial<IComboBoxProps> {
     caseOptions: IComboBoxOption[];
     setSelectedOption: (option: IComboBoxOption) => void;
     disabled?: boolean;
-    domain: string;
+    getDomain: () => Promise<string>;
 }
-declare function CaseFilePicker({ label, handleComboBoxChange, styles, showErrorMessage, selectedOption, caseOptions, setSelectedOption, disabled, domain, }: CaseControlProps): JSX.Element;
+declare function CaseFilePicker({ label, handleComboBoxChange, styles, showErrorMessage, selectedOption, caseOptions, setSelectedOption, disabled, getDomain, }: CaseControlProps): JSX.Element;
 declare namespace CaseFilePicker {
     var defaultProps: {
         disabled: boolean;
