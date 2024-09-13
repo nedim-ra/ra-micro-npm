@@ -19,7 +19,7 @@ interface CaseControlProps extends Partial<IComboBoxProps> {
   setSelectedOption: (option: IComboBoxOption) => void;
   disabled?: boolean;
   getDomain: () => Promise<string>;
-  getCase: (domain: string, numValue: string) => Promise<CaseFile[]>;
+  getCase: (numValue: string) => Promise<CaseFile[]>;
 }
 
 function CaseFilePicker({
@@ -55,7 +55,7 @@ function CaseFilePicker({
     const numValue = input.replace(/\D/g, "");
     const formattedValue = CaseFileUtils.formatCaseYear(numValue);
     const domain = await getDomain();
-    let caseData = await getCase(domain, numValue);
+    let caseData = await getCase(numValue);
 
     if (caseData && caseData.length > 0) {
       const fullText = `${formattedValue} - ${caseData[0].akt_name}`;

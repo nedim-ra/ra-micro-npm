@@ -33,17 +33,17 @@ function V({
     }
   }, j = async (a) => {
     var m, p;
-    const t = a.replace(/\D/g, ""), c = f.formatCaseYear(t), s = await x();
-    let o = await b(s, t);
+    const t = a.replace(/\D/g, ""), c = f.formatCaseYear(t), r = await x();
+    let o = await b(t);
     if (o && o.length > 0) {
-      const i = `${c} - ${o[0].akt_name}`, r = [{ key: t, text: i }];
-      (m = e == null ? void 0 : e.current) == null || m.focus(!0), l(r);
-    } else if (o = await S.getCaseByName(s, a), !o || o.length === 0)
+      const i = `${c} - ${o[0].akt_name}`, s = [{ key: t, text: i }];
+      (m = e == null ? void 0 : e.current) == null || m.focus(!0), l(s);
+    } else if (o = await S.getCaseByName(r, a), !o || o.length === 0)
       k("Es gibt keine Suchergebnisse");
     else {
-      const i = o.map((r) => ({
-        key: f.formatCaseYear(r.akt_nr || ""),
-        text: `${f.formatCaseYear(r.akt_nr || "")} - ${r.akt_name}`
+      const i = o.map((s) => ({
+        key: f.formatCaseYear(s.akt_nr || ""),
+        text: `${f.formatCaseYear(s.akt_nr || "")} - ${s.akt_name}`
       }));
       (p = e == null ? void 0 : e.current) == null || p.focus(!0), l(i);
     }
@@ -54,8 +54,8 @@ function V({
       componentRef: e,
       allowFreeform: !0,
       label: d,
-      onChange: (a, t, c, s) => {
-        a && s && j(s);
+      onChange: (a, t, c, r) => {
+        a && r && j(r);
       },
       onItemClick: (a, t) => {
         t && y(t);
