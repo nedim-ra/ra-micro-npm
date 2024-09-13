@@ -2,21 +2,22 @@ import { j as w } from "../../node_modules/react/jsx-runtime.js";
 import F from "react";
 import "../../models/CaseFile.js";
 import f from "../../utils/case-file-utils.js";
-import d from "../../services/case-file-service.js";
-import { ComboBox as S } from "../../node_modules/@fluentui/react/lib/components/ComboBox/ComboBox.js";
-function $({
-  label: C,
+import S from "../../services/case-file-service.js";
+import { ComboBox as $ } from "../../node_modules/@fluentui/react/lib/components/ComboBox/ComboBox.js";
+function V({
+  label: d,
   handleComboBoxChange: l,
   showErrorMessage: k,
-  styles: g,
+  styles: C,
   selectedOption: u,
-  caseOptions: y,
-  setSelectedOption: _,
-  disabled: x = !1,
+  caseOptions: g,
+  setSelectedOption: y,
+  disabled: _ = !1,
   // TEMP: getDomain will be handled differently
-  getDomain: b
+  getDomain: x,
+  getCase: b
 }) {
-  const e = F.useRef(null), n = Object.assign(g || {}), h = {
+  const e = F.useRef(null), n = Object.assign(C || {}), h = {
     ...n,
     // Spread existing styles
     root: {
@@ -32,12 +33,12 @@ function $({
     }
   }, j = async (a) => {
     var m, p;
-    const t = a.replace(/\D/g, ""), c = f.formatCaseYear(t), s = await b();
-    let o = await d.getCase(s, t);
+    const t = a.replace(/\D/g, ""), c = f.formatCaseYear(t), s = await x();
+    let o = await b(s, t);
     if (o && o.length > 0) {
       const i = `${c} - ${o[0].akt_name}`, r = [{ key: t, text: i }];
       (m = e == null ? void 0 : e.current) == null || m.focus(!0), l(r);
-    } else if (o = await d.getCaseByName(s, a), !o || o.length === 0)
+    } else if (o = await S.getCaseByName(s, a), !o || o.length === 0)
       k("Es gibt keine Suchergebnisse");
     else {
       const i = o.map((r) => ({
@@ -48,29 +49,29 @@ function $({
     }
   };
   return /* @__PURE__ */ w.jsx(
-    S,
+    $,
     {
       componentRef: e,
       allowFreeform: !0,
-      label: C,
+      label: d,
       onChange: (a, t, c, s) => {
         a && s && j(s);
       },
       onItemClick: (a, t) => {
-        t && _(t);
+        t && y(t);
       },
       styles: h,
-      options: y,
+      options: g,
       selectedKey: u ? u.key : void 0,
       useComboBoxAsMenuWidth: !0,
-      disabled: x
+      disabled: _
     }
   );
 }
-$.defaultProps = {
+V.defaultProps = {
   disabled: !1
 };
 export {
-  $ as default
+  V as default
 };
 //# sourceMappingURL=CaseFilePicker.js.map
