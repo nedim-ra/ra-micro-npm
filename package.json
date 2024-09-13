@@ -27,7 +27,6 @@
   },
   "dependencies": {
     "@fluentui/react": "^8.120.8",
-    "formik": "^2.4.6",
     "axios": "^1.7.7"
   },
   "devDependencies": {
