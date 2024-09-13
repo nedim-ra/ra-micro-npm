@@ -6,7 +6,7 @@ import {
   IComboBoxStyles,
 } from "@fluentui/react";
 import React, { FormEvent } from "react";
-import { CaseFile, CaseFileUtils } from "../../main.ts";
+import { CaseFile } from "../../main.ts";
 
 interface CaseControlProps extends Partial<IComboBoxProps> {
   label: string;
@@ -49,9 +49,15 @@ function CaseFilePicker({
     },
   };
 
+  const formatCaseYear = (value: string) => {
+    const caseNumber = value.slice(0, -2);
+    const yearNumber = value.slice(-2);
+    return `${caseNumber}/${yearNumber}`;
+  };
+
   const onChangeValue = async (input: string) => {
     const numValue = input.replace(/\D/g, "");
-    const formattedValue = CaseFileUtils.formatCaseYear(numValue);
+    const formattedValue = formatCaseYear(numValue);
     let caseData = await getCase(numValue);
     if (caseData && caseData.length > 0) {
       const fullText = `${formattedValue} - ${caseData[0].akt_name}`;
@@ -64,8 +70,8 @@ function CaseFilePicker({
         showErrorMessage("Es gibt keine Suchergebnisse"); // TEMP
       } else {
         const options = caseData.map((item) => ({
-          key: CaseFileUtils.formatCaseYear(item.akt_nr || ""),
-          text: `${CaseFileUtils.formatCaseYear(item.akt_nr || "")} - ${item.akt_name}`,
+          key: formatCaseYear(item.akt_nr || ""),
+          text: `${formatCaseYear(item.akt_nr || "")} - ${item.akt_name}`,
         }));
         comboBoxRef?.current?.focus(true);
         handleComboBoxChange(options);
