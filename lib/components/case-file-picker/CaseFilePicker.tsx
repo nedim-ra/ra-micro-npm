@@ -7,7 +7,6 @@ import {
 } from "@fluentui/react";
 import React, { FormEvent } from "react";
 import { CaseFile, CaseFileUtils } from "../../main.ts";
-import CaseFileService from "../../services/case-file-service.ts";
 
 interface CaseControlProps extends Partial<IComboBoxProps> {
   label: string;
@@ -18,8 +17,8 @@ interface CaseControlProps extends Partial<IComboBoxProps> {
   caseOptions: IComboBoxOption[];
   setSelectedOption: (option: IComboBoxOption) => void;
   disabled?: boolean;
-  getDomain: () => Promise<string>;
   getCase: (numValue: string) => Promise<CaseFile[]>;
+  getCaseByName: (input: string) => Promise<CaseFile[]>;
 }
 
 function CaseFilePicker({
@@ -31,9 +30,8 @@ function CaseFilePicker({
   caseOptions,
   setSelectedOption,
   disabled = false,
-  // TEMP: getDomain will be handled differently
-  getDomain,
   getCase,
+  getCaseByName,
 }: CaseControlProps): JSX.Element {
   const comboBoxRef = React.useRef<IComboBox>(null);
   const initialStyle = Object.assign(styles || {});
@@ -54,16 +52,17 @@ function CaseFilePicker({
   const onChangeValue = async (input: string) => {
     const numValue = input.replace(/\D/g, "");
     const formattedValue = CaseFileUtils.formatCaseYear(numValue);
-    const domain = await getDomain();
     let caseData = await getCase(numValue);
 
+    console.log(caseData);
     if (caseData && caseData.length > 0) {
       const fullText = `${formattedValue} - ${caseData[0].akt_name}`;
       const options = [{ key: numValue, text: fullText }];
       comboBoxRef?.current?.focus(true);
+      console.log(options);
       handleComboBoxChange(options);
     } else {
-      caseData = await CaseFileService.getCaseByName(domain, input);
+      caseData = await getCaseByName(input);
       if (!caseData || caseData.length === 0) {
         showErrorMessage("Es gibt keine Suchergebnisse"); // TEMP
       } else {
@@ -72,6 +71,7 @@ function CaseFilePicker({
           text: `${CaseFileUtils.formatCaseYear(item.akt_nr || "")} - ${item.akt_name}`,
         }));
         comboBoxRef?.current?.focus(true);
+        console.log(options);
         handleComboBoxChange(options);
       }
     }

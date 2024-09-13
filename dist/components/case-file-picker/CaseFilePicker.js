@@ -1,77 +1,75 @@
-import { j as w } from "../../node_modules/react/jsx-runtime.js";
-import F from "react";
+import { j } from "../../node_modules/react/jsx-runtime.js";
+import $ from "react";
 import "../../models/CaseFile.js";
-import f from "../../utils/case-file-utils.js";
-import S from "../../services/case-file-service.js";
-import { ComboBox as $ } from "../../node_modules/@fluentui/react/lib/components/ComboBox/ComboBox.js";
-function V({
-  label: d,
-  handleComboBoxChange: l,
-  showErrorMessage: k,
-  styles: C,
-  selectedOption: u,
-  caseOptions: g,
-  setSelectedOption: y,
+import l from "../../utils/case-file-utils.js";
+import { ComboBox as w } from "../../node_modules/@fluentui/react/lib/components/ComboBox/ComboBox.js";
+function F({
+  label: p,
+  handleComboBoxChange: f,
+  showErrorMessage: d,
+  styles: g,
+  selectedOption: i,
+  caseOptions: k,
+  setSelectedOption: C,
   disabled: _ = !1,
-  // TEMP: getDomain will be handled differently
-  getDomain: x,
-  getCase: b
+  getCase: y,
+  getCaseByName: x
 }) {
-  const e = F.useRef(null), n = Object.assign(C || {}), h = {
-    ...n,
+  const t = $.useRef(null), r = Object.assign(g || {}), b = {
+    ...r,
     // Spread existing styles
     root: {
-      ...n.root,
+      ...r.root,
       // Spread existing container styles
       backgroundColor: "#ffffd0"
       // Add the background color
     },
     input: {
-      ...n.input,
+      ...r.input,
       // Spread existing container styles
       backgroundColor: "#ffffd0"
     }
-  }, j = async (a) => {
-    var m, p;
-    const t = a.replace(/\D/g, ""), c = f.formatCaseYear(t), r = await x();
-    let o = await b(t);
-    if (o && o.length > 0) {
-      const i = `${c} - ${o[0].akt_name}`, s = [{ key: t, text: i }];
-      (m = e == null ? void 0 : e.current) == null || m.focus(!0), l(s);
-    } else if (o = await S.getCaseByName(r, a), !o || o.length === 0)
-      k("Es gibt keine Suchergebnisse");
+  }, h = async (a) => {
+    var u, m;
+    const o = a.replace(/\D/g, ""), c = l.formatCaseYear(o);
+    let e = await y(o);
+    if (console.log(e), e && e.length > 0) {
+      const n = `${c} - ${e[0].akt_name}`, s = [{ key: o, text: n }];
+      (u = t == null ? void 0 : t.current) == null || u.focus(!0), console.log(s), f(s);
+    } else if (e = await x(a), !e || e.length === 0)
+      d("Es gibt keine Suchergebnisse");
     else {
-      const i = o.map((s) => ({
-        key: f.formatCaseYear(s.akt_nr || ""),
-        text: `${f.formatCaseYear(s.akt_nr || "")} - ${s.akt_name}`
+      const n = e.map((s) => ({
+        key: l.formatCaseYear(s.akt_nr || ""),
+        text: `${l.formatCaseYear(s.akt_nr || "")} - ${s.akt_name}`
       }));
-      (p = e == null ? void 0 : e.current) == null || p.focus(!0), l(i);
+      (m = t == null ? void 0 : t.current) == null || m.focus(!0), console.log(n), f(n);
     }
   };
-  return /* @__PURE__ */ w.jsx(
-    $,
+  return /* @__PURE__ */ j.jsx(
+    w,
     {
-      componentRef: e,
+      componentRef: t,
       allowFreeform: !0,
-      label: d,
-      onChange: (a, t, c, r) => {
-        a && r && j(r);
+      label: p,
+      onChange: (a, o, c, e) => {
+        a && e && h(e);
       },
-      onItemClick: (a, t) => {
-        t && y(t);
+      onItemClick: (a, o) => {
+        o && C(o);
       },
-      styles: h,
-      options: g,
-      selectedKey: u ? u.key : void 0,
+      styles: b,
+      options: k,
+      selectedKey: i ? i.key : void 0,
       useComboBoxAsMenuWidth: !0,
       disabled: _
     }
   );
 }
-V.defaultProps = {
+F.defaultProps = {
   disabled: !1
 };
 export {
-  V as default
+  F as default
 };
 //# sourceMappingURL=CaseFilePicker.js.map
