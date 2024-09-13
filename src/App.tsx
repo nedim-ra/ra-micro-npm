@@ -30,7 +30,7 @@ function App() {
         setSelectedOption={() => null}
         getDomain={() =>
           new Promise((resolve) => {
-            resolve("");
+            resolve("https://main.es.ra-micro.de");
           })
         }
       />

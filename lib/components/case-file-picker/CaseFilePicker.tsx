@@ -53,7 +53,6 @@ function CaseFilePicker({
     const numValue = input.replace(/\D/g, "");
     const formattedValue = CaseFileUtils.formatCaseYear(numValue);
     const domain = await getDomain();
-    console.log(domain, numValue);
     let caseData = await CaseFileService.getCase(domain, numValue);
 
     if (caseData && caseData.length > 0) {
@@ -64,9 +63,6 @@ function CaseFilePicker({
     } else {
       caseData = await CaseFileService.getCaseByName(domain, input);
       if (!caseData || caseData.length === 0) {
-        showErrorMessage(
-          "FULL_TEXT_SEARCH.SUBMISSION_ERRORS.NO_SEARCH_RESULTS"
-        );
         showErrorMessage("Es gibt keine Suchergebnisse"); // TEMP
       } else {
         const options = caseData.map((item) => ({
@@ -104,7 +100,6 @@ function CaseFilePicker({
       selectedKey={selectedOption ? selectedOption.key : undefined}
       useComboBoxAsMenuWidth
       disabled={disabled}
-      // {...rest}
     />
   );
 }
