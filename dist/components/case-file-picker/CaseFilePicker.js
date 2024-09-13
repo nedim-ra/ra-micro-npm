@@ -1,66 +1,66 @@
 import { j } from "../../node_modules/react/jsx-runtime.js";
 import $ from "react";
 import "../../models/CaseFile.js";
-import l from "../../utils/case-file-utils.js";
+import f from "../../utils/case-file-utils.js";
 import { ComboBox as w } from "../../node_modules/@fluentui/react/lib/components/ComboBox/ComboBox.js";
 function F({
-  label: p,
-  handleComboBoxChange: f,
-  showErrorMessage: d,
-  styles: g,
-  selectedOption: i,
-  caseOptions: k,
-  setSelectedOption: C,
+  label: k,
+  handleComboBoxChange: i,
+  showErrorMessage: p,
+  styles: d,
+  selectedOption: n,
+  caseOptions: C,
+  setSelectedOption: y,
   disabled: _ = !1,
-  getCase: y,
-  getCaseByName: x
+  getCase: x,
+  getCaseByName: b
 }) {
-  const t = $.useRef(null), r = Object.assign(g || {}), b = {
-    ...r,
+  const o = $.useRef(null), l = Object.assign(d || {}), c = {
+    ...l,
     // Spread existing styles
     root: {
-      ...r.root,
+      ...l.root,
       // Spread existing container styles
       backgroundColor: "#ffffd0"
       // Add the background color
     },
     input: {
-      ...r.input,
+      ...l.input,
       // Spread existing container styles
       backgroundColor: "#ffffd0"
     }
   }, h = async (a) => {
-    var u, m;
-    const o = a.replace(/\D/g, ""), c = l.formatCaseYear(o);
-    let e = await y(o);
+    var m, g;
+    const t = a.replace(/\D/g, ""), u = f.formatCaseYear(t);
+    let e = await x(t);
     if (console.log(e), e && e.length > 0) {
-      const n = `${c} - ${e[0].akt_name}`, s = [{ key: o, text: n }];
-      (u = t == null ? void 0 : t.current) == null || u.focus(!0), console.log(s), f(s);
-    } else if (e = await x(a), !e || e.length === 0)
-      d("Es gibt keine Suchergebnisse");
+      const r = `${u} - ${e[0].akt_name}`, s = [{ key: t, text: r }];
+      (m = o == null ? void 0 : o.current) == null || m.focus(!0), console.log(s), i(s);
+    } else if (e = await b(a), !e || e.length === 0)
+      p("Es gibt keine Suchergebnisse");
     else {
-      const n = e.map((s) => ({
-        key: l.formatCaseYear(s.akt_nr || ""),
-        text: `${l.formatCaseYear(s.akt_nr || "")} - ${s.akt_name}`
+      const r = e.map((s) => ({
+        key: f.formatCaseYear(s.akt_nr || ""),
+        text: `${f.formatCaseYear(s.akt_nr || "")} - ${s.akt_name}`
       }));
-      (m = t == null ? void 0 : t.current) == null || m.focus(!0), console.log(n), f(n);
+      (g = o == null ? void 0 : o.current) == null || g.focus(!0), console.log(r), i(r);
     }
   };
-  return /* @__PURE__ */ j.jsx(
+  return console.log(c), console.log(n ? n.key : void 0), /* @__PURE__ */ j.jsx(
     w,
     {
-      componentRef: t,
+      componentRef: o,
       allowFreeform: !0,
-      label: p,
-      onChange: (a, o, c, e) => {
+      label: k,
+      onChange: (a, t, u, e) => {
         a && e && h(e);
       },
-      onItemClick: (a, o) => {
-        o && C(o);
+      onItemClick: (a, t) => {
+        t && y(t);
       },
-      styles: b,
-      options: k,
-      selectedKey: i ? i.key : void 0,
+      styles: c,
+      options: C,
+      selectedKey: n ? n.key : void 0,
       useComboBoxAsMenuWidth: !0,
       disabled: _
     }

@@ -77,6 +77,8 @@ function CaseFilePicker({
     }
   };
 
+  console.log(comboBoxStyles);
+  console.log(selectedOption ? selectedOption.key : undefined);
   return (
     <ComboBox
       componentRef={comboBoxRef}
