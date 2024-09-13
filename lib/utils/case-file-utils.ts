@@ -1,6 +1,6 @@
 import { IComboBoxOption } from "@fluentui/react";
 
-class CaseFileUtls {
+class CaseFileUtils {
   public static formatCaseYear = (value: string) => {
     const caseNumber = value.slice(0, -2);
     const yearNumber = value.slice(-2);
@@ -36,4 +36,4 @@ class CaseFileUtls {
   };
 }
 
-export default CaseFileUtls;
+export default CaseFileUtils;
