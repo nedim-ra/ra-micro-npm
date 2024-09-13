@@ -53,13 +53,10 @@ function CaseFilePicker({
     const numValue = input.replace(/\D/g, "");
     const formattedValue = CaseFileUtils.formatCaseYear(numValue);
     let caseData = await getCase(numValue);
-
-    console.log(caseData);
     if (caseData && caseData.length > 0) {
       const fullText = `${formattedValue} - ${caseData[0].akt_name}`;
       const options = [{ key: numValue, text: fullText }];
       comboBoxRef?.current?.focus(true);
-      console.log(options);
       handleComboBoxChange(options);
     } else {
       caseData = await getCaseByName(input);
@@ -71,14 +68,12 @@ function CaseFilePicker({
           text: `${CaseFileUtils.formatCaseYear(item.akt_nr || "")} - ${item.akt_name}`,
         }));
         comboBoxRef?.current?.focus(true);
-        console.log(options);
         handleComboBoxChange(options);
       }
     }
   };
 
-  console.log(comboBoxStyles);
-  console.log(selectedOption ? selectedOption.key : undefined);
+  console.log(caseOptions);
   return (
     <ComboBox
       componentRef={comboBoxRef}
