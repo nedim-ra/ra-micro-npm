@@ -53,6 +53,7 @@ function CaseFilePicker({
     const numValue = input.replace(/\D/g, "");
     const formattedValue = CaseFileUtils.formatCaseYear(numValue);
     const domain = await getDomain();
+    console.log(domain, numValue);
     let caseData = await CaseFileService.getCase(domain, numValue);
 
     if (caseData && caseData.length > 0) {
