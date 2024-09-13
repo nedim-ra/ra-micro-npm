@@ -24,15 +24,14 @@ interface CaseControlProps extends Partial<IComboBoxProps> {
 function CaseFilePicker({
   label,
   handleComboBoxChange,
-  styles,
   showErrorMessage,
+  styles,
   selectedOption,
   caseOptions,
   setSelectedOption,
   disabled = false,
   // TEMP: getDomain will be handled differently
   getDomain,
-  // ...rest
 }: CaseControlProps): JSX.Element {
   const comboBoxRef = React.useRef<IComboBox>(null);
   const initialStyle = Object.assign(styles || {});
@@ -64,9 +63,9 @@ function CaseFilePicker({
     } else {
       caseData = await CaseFileService.getCaseByName(domain, input);
       if (!caseData || caseData.length === 0) {
-        // showErrorMessage(
-        //   t("FULL_TEXT_SEARCH.SUBMISSION_ERRORS.NO_SEARCH_RESULTS")
-        // );
+        showErrorMessage(
+          "FULL_TEXT_SEARCH.SUBMISSION_ERRORS.NO_SEARCH_RESULTS"
+        );
         showErrorMessage("Es gibt keine Suchergebnisse"); // TEMP
       } else {
         const options = caseData.map((item) => ({
