@@ -34,20 +34,20 @@ function CaseFilePicker({
   getCaseByName,
 }: CaseControlProps): JSX.Element {
   const comboBoxRef = React.useRef<IComboBox>(null);
-  const initialStyle = Object.assign(styles || {});
-
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+  console.log(styles);
   // Update styles to include the background color
-  const comboBoxStyles: Partial<IComboBoxStyles> = {
-    ...initialStyle, // Spread existing styles
-    root: {
-      ...initialStyle.root, // Spread existing container styles
-      backgroundColor: "#ffffd0", // Add the background color
-    },
-    input: {
-      ...initialStyle.input, // Spread existing container styles
-      backgroundColor: "#ffffd0",
-    },
-  };
+  // const comboBoxStyles: Partial<IComboBoxStyles> = {
+  //   ...initialStyle, // Spread existing styles
+  //   root: {
+  //     ...initialStyle.root, // Spread existing container styles
+  //     backgroundColor: "#ffffd0", // Add the background color
+  //   },
+  //   input: {
+  //     ...initialStyle.input, // Spread existing container styles
+  //     backgroundColor: "#ffffd0",
+  //   },
+  // };
 
   const onChangeValue = async (input: string) => {
     const numValue = input.replace(/\D/g, "");
@@ -94,7 +94,7 @@ function CaseFilePicker({
           setSelectedOption(option);
         }
       }}
-      styles={comboBoxStyles}
+      // styles={comboBoxStyles}
       options={caseOptions}
       selectedKey={selectedOption ? selectedOption.key : undefined}
       useComboBoxAsMenuWidth
