@@ -12,7 +12,7 @@ interface CaseControlProps extends Partial<IComboBoxProps> {
     getCase: (numValue: string) => Promise<CaseFile[]>;
     getCaseByName: (input: string) => Promise<CaseFile[]>;
 }
-declare function CaseFilePicker({ label, handleComboBoxChange, showErrorMessage, styles, selectedOption, caseOptions, setSelectedOption, disabled, getCase, getCaseByName, }: CaseControlProps): JSX.Element;
+declare function CaseFilePicker({ label, handleComboBoxChange, showErrorMessage, styles, selectedOption, caseOptions, setSelectedOption, disabled, getCase, getCaseByName, ...rest }: CaseControlProps): JSX.Element;
 declare namespace CaseFilePicker {
     var defaultProps: {
         disabled: boolean;

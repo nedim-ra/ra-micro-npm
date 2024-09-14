@@ -8,4 +8,3 @@ let n = a;
 export {
   n as default
 };
-//# sourceMappingURL=CaseFile.js.map

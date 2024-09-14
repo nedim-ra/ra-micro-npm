@@ -5,7 +5,7 @@ import {
   IComboBoxProps,
   IComboBoxStyles,
 } from "@fluentui/react";
-import React, { FormEvent } from "react";
+import React, { KeyboardEvent } from "react";
 import { CaseFile } from "../../main.ts";
 
 interface CaseControlProps extends Partial<IComboBoxProps> {
@@ -32,6 +32,7 @@ function CaseFilePicker({
   disabled = false,
   getCase,
   getCaseByName,
+  ...rest
 }: CaseControlProps): JSX.Element {
   const comboBoxRef = React.useRef<IComboBox>(null);
   const initialStyle = Object.assign(styles || {});
@@ -85,13 +86,15 @@ function CaseFilePicker({
       allowFreeform
       label={label}
       onChange={(
-        event: FormEvent<IComboBox>,
-        _option,
-        _index,
+        event: KeyboardEvent<IComboBox>,
+        _option?: IComboBoxOption,
+        _index?: number,
         value?: string
       ) => {
         if (event && value) {
-          onChangeValue(value);
+          if (event.key === "Enter") {
+            onChangeValue(value);
+          }
         }
       }}
       onItemClick={(_, option?: IComboBoxOption) => {
@@ -104,6 +107,8 @@ function CaseFilePicker({
       selectedKey={selectedOption ? selectedOption.key : undefined}
       useComboBoxAsMenuWidth
       disabled={disabled}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...rest}
     />
   );
 }

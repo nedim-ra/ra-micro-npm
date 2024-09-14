@@ -1,4 +1,4 @@
-import { j as o } from "../node_modules/react/jsx-runtime.js";
+import { j as o } from "../jsx-runtime-B6kdoens.js";
 import { useState as e } from "react";
 function m() {
   const [t, n] = e(0);
@@ -13,4 +13,3 @@ function m() {
 export {
   m as default
 };
-//# sourceMappingURL=ComponentA.js.map
